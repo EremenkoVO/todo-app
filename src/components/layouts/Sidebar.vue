@@ -16,7 +16,7 @@ export default {
   margin: 0;
   padding: 15px;
   width: 250px;
-  background-color: black;
+  background-color: #f1f4f7;
   position: fixed;
   height: 100%;
   overflow: auto;
