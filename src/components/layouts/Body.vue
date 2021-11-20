@@ -9,8 +9,8 @@
     <InputCreate v-model="showCreateTasks" placeholder="Название задачи" @create="addTask" />
     <div class="list-tasks">
       <div v-for="item in modelValue.tasks" :key="item.id" class="task">
-        <input type="checkbox" v-model="item.checked" />
-        <label>{{ item.name }}</label>
+        <input type="checkbox" class="custom-checkbox" :id="item.id" v-model="item.checked" />
+        <label :for="item.id">{{ item.name }}</label>
       </div>
     </div>
   </div>
