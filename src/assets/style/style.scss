@@ -1,12 +1,62 @@
 :root {
-  --success: #3cd494;
   --default: #74747c;
-  --danger: #ec1b1b;
-  --warning: #fcc121;
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007dcc;
+  --secondary: #333;
+  --success: #4fc47f;
+  --info: #5bbfde;
+  --warning: #f0ad4e;
+  --danger: #f35a3d;
+  --light: #f8f8f8;
+  --dark: #bababa;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url('../fonts/Roboto/Roboto-Bold.ttf');
+}
+
+* {
+  font-family: 'Roboto';
+}
+
+.app {
+  box-sizing: border-box;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  height: 100%;
+  background-color: #f8f8f8;
+  font-family: 'Roboto', sans-serif;
+  color: #595959;
+  overflow-x: hidden;
+}
+
+.label-control {
+  font-size: 14px;
 }
 
 .btn {
-  background-color: white;
+  background-color: var(--light);
   padding: 5px 15px;
   border: 1px solid var(--default);
   border-radius: 4px;
@@ -15,7 +65,7 @@
 
   &:hover {
     background-color: var(--default);
-    color: white;
+    color: var(--light);
   }
 
   &.btn-default {
@@ -24,17 +74,19 @@
 
     &:hover {
       background-color: var(--default);
-      color: white;
+      color: var(--light);
     }
   }
 
   &.btn-success {
     border-color: var(--success);
-    color: var(--success);
+    background-color: var(--success);
+    color: var(--light);
 
     &:hover {
-      background-color: var(--success);
-      color: white;
+      background-color: #218838;
+      border-color: #1e7e34;
+      color: var(--light);
     }
   }
 
@@ -44,7 +96,7 @@
 
     &:hover {
       background-color: var(--danger);
-      color: white;
+      color: var(--light);
     }
   }
 
@@ -54,11 +106,119 @@
 
     &:hover {
       background-color: var(--warning);
-      color: white;
+      color: var(--light);
     }
   }
 
   &.btn-block {
     width: 100%;
+  }
+}
+
+.btn-link {
+  border: none;
+  background-color: inherit;
+  width: 100%;
+  padding: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+  border-radius: 4px;
+  color: var(--default);
+  margin-top: 5px;
+
+  &.active {
+    background-color: var(--default);
+    color: white;
+    cursor: auto;
+  }
+
+  &:hover {
+    color: white;
+    background-color: var(--default);
+  }
+}
+
+.custom-checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+
+  + label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      flex-shrink: 0;
+      flex-grow: 0;
+      border: 1px solid #adb5bd;
+      border-radius: 0.25em;
+      margin-right: 0.5em;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 50% 50%;
+    }
+  }
+
+  &:not(:disabled) {
+    &:not(:checked) + label:hover::before {
+      border-color: #b3d7ff;
+    }
+
+    &:active + label::before {
+      background-color: #b3d7ff;
+      border-color: #b3d7ff;
+    }
+  }
+
+  &:focus {
+    + label::before {
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    &:not(:checked) + label::before {
+      border-color: #80bdff;
+    }
+  }
+
+  &:checked + label::before {
+    border-color: #0b76ef;
+    background-color: #0b76ef;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+  }
+
+  &:disabled + label::before {
+    background-color: #e9ecef;
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.1s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.m-2 {
+  margin: 15px;
+}
+
+@media screen and (min-width: 1200px) {
+  * {
+    font-size: 18px;
+  }
+
+  .btn {
+    padding: 10px 25px;
+  }
+
+  .label-control {
+    font-size: 18px;
   }
 }
