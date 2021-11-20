@@ -8,9 +8,14 @@
     </div>
     <InputCreate v-model="showCreateTasks" placeholder="Название задачи" @create="addTask" />
     <div class="list-tasks">
-      <div v-for="item in modelValue.tasks" :key="item.id" class="task">
-        <input type="checkbox" class="custom-checkbox" :id="item.id" v-model="item.checked" />
-        <label :for="item.id">{{ item.name }}</label>
+      <div v-if="modelValue.tasks.length > 0">
+        <div v-for="item in modelValue.tasks" :key="item.id" class="task">
+          <input type="checkbox" class="custom-checkbox" :id="item.id" v-model="item.checked" />
+          <label :for="item.id">{{ item.name }}</label>
+        </div>
+      </div>
+      <div v-else class="empty">
+        <h4>Задач нет</h4>
       </div>
     </div>
   </div>
@@ -61,6 +66,10 @@ export default {
 
 .list-tasks {
   margin-top: 20px;
+
+  .empty {
+    margin: auto;
+  }
 }
 
 .task {
